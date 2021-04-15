@@ -1,0 +1,31 @@
+﻿@model TestTask.ViewModel.AddCompany
+@{
+    ViewData["Title"] = "Новая компания";
+}
+
+<h2>Добавить новую компанию</h2>
+
+<form asp-action="AddCompany" asp-controller="User" method="post" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="CompanyName">Название</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="100" asp-for="CompanyName"></textarea>
+            <span asp-validation-for="CompanyName" />
+        </div>
+        <div>
+            <label asp-for="Organization">Организационная форма</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="100" asp-for="Organization"></textarea>
+            <span asp-validation-for="Organization" />
+        </div>
+        <div>
+            <label asp-for="Size">Количество сотрудников</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="100" asp-for="Size"></textarea>
+            <span asp-validation-for="Size" />
+        </div>
+        <div>
+            <br /><input type="submit" name="state" value="Добавить" class="btn btn-outline-dark" />
+            <input type="submit" name="state" value="Отмена" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>

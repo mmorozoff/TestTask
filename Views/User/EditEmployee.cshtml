@@ -1,0 +1,56 @@
+﻿@model TestTask.ViewModel.AddEmployee
+@{
+    ViewData["Title"] = "Редактирование данных";
+}
+
+<h2>Редактирование данных сотрудника</h2>
+
+<form asp-action="EditEmployee" asp-controller="User" method="post" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Surname">Фамилия</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="20" asp-for="Surname">@Model.Surname</textarea>
+            <span asp-validation-for="Surname" />
+        </div>
+        <div>
+            <label asp-for="FirstName">Имя</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="20" asp-for="FirstName">@Model.FirstName</textarea>
+            <span asp-validation-for="FirstName" />
+        </div>
+        <div>
+            <label asp-for="Patronymic">Отчество</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="20" asp-for="Patronymic">@Model.Patronymic</textarea>
+            <span asp-validation-for="Patronymic" />
+        </div>
+        <div>
+            <p>Компания (выберите из списка)</p>
+            <input list="my-list1" name="Company" value="@Model.Company">
+            <datalist id="my-list1">
+                @foreach (var item in Model.Companies)
+                {
+                    <option>@item</option>
+                }
+            </datalist>
+        </div>
+        <div>
+            <p>Должность (выберите из списка)</p>
+            <input list="my-list" name="Position" value="@Model.Position">
+            <datalist id="my-list">
+                <option>Тестировщик</option>
+                <option>Разработчик</option>
+                <option>Бизнес-аналитик</option>
+                <option>Менеджер</option>
+            </datalist>
+        </div>
+        <div>
+            <label asp-for="Date">Дата найма</label><br />
+            <textarea style="width:100%; max-width:300px" maxlength="10" asp-for="Date">@Model.Date</textarea>
+            <span asp-validation-for="Date" />
+        </div>
+
+        <div>
+            <br /><input type="submit" value="Сохранить" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>

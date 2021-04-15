@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TestTask.Models.Company>
+@{
+    ViewData["Title"] = "Компании";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><b>Компании</b></h1>
+</div>
+<center>
+    <a class="text-dark" asp-action="Companies" asp-route-state="name" id="word">По названию</a>
+    &nbsp;&nbsp;
+    <a class="text-dark" asp-action="Companies" asp-route-state="size" id="word">По размеру</a>
+    &nbsp;&nbsp;
+</center>
+<div class="text-right">
+    <a class="text-dark" asp-action="AddCompany" asp-controller="User"><img width="20" height="20" src="~/image/add.png" />Добавить компанию</a><br />
+</div>
+
+
+<form method="post" asp-action="ActionCompany" asp-controller="User">
+    <script type="text/javascript">
+        function check(field) {
+            for (i = 0; i < field.length; i++)
+                if (field[i].checked == true)
+                    field[i].checked = false;
+                else
+                    field[i].checked = true;
+        }
+    </script>
+    <div class="text-left">
+        <div>
+            <button name="delete"><img width="30" height="30" src="~/image/trash.png" title="Удалить компанию" /></button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <input id="global_checkbox" type="checkbox" onclick="check(this.form.AreChecked)">
+                </th>
+                <th><b>ID</b></th>
+                <th><b>Название</b></th>
+                <th><b>Организационная форма</b></th>
+                <th><b>Количество сотрудников</b></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td><input class="check-box" type="checkbox" name="AreChecked" value="@item.CompanyName" /></td>
+                <td>@item.CompanyID</td>
+                <td>@item.CompanyName</td>
+                <td>@item.Organization</td>
+                <td>@item.Size
+                <a asp-action="EditCompany" asp-controller="User" asp-route-id="@item.CompanyID"><img align="right" width="40" height="40" src="~/image/edit.png" hspace="10" title="Редактировать" /></a>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</form>
