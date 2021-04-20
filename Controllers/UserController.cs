@@ -148,7 +148,6 @@ namespace TestTask.Controllers
                             employee.Company = (string)reader.GetValue(reader.GetOrdinal(DB.columnNamesEmployee[6]));
                         }
                     }
-
                     reader.Close();
                 }
                 catch (SqlException err)

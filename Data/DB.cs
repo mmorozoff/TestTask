@@ -9,7 +9,7 @@ namespace TestTask.Data
     {
         public static string connectionString { set; get; } = @"Data Source=.\SQLEXPRESS;Initial Catalog=testdb;Integrated Security=True";
         public static string[] getEmployeeTable { set; get; } = {"SELECT * FROM Employee ORDER BY EmployeeID ASC",
-                                                                 "SELECT * FROM Employee ORDER BY Surname ASC",
+                                                                "SELECT * FROM Employee ORDER BY Surname ASC",
                                                                  "SELECT * FROM Employee ORDER BY Company ASC" };
         public static string[] columnNamesEmployee { set; get; } = { "EmployeeID", "Surname", "FirstName", "Patronymic", "Date", "Position", "Company" };
         public static string companyList { set; get; } = "SELECT CompanyName FROM Company";
